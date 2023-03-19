@@ -28,9 +28,9 @@ function App() {
     if (students && students.length){
      const columns= [
       {
-        title: "StudentId",
-        dataIndex: "StudentId",
-        key: "StudentId"
+        title: "Student Id",
+        dataIndex: "studentId",
+        key: "studentId"
       },
       {
         title: "First Name",
@@ -53,6 +53,13 @@ function App() {
         key: "gender"
       }
      ];
+     return (
+      <Table 
+      dataSource={students} 
+      columns={columns} 
+      rowKey= 'studentId' 
+      />
+     );
     }
 
   return (
