@@ -4,6 +4,7 @@ import { getAllStudents } from './Client';
 import { 
   Table 
 } from 'antd';
+import Container from './Container';
 
 function App() {
   // state = {
@@ -54,11 +55,14 @@ function App() {
       }
      ];
      return (
+      <Container>
       <Table 
       dataSource={students} 
-      columns={columns} 
+      columns={columns}
+      // pagination={false} 
       rowKey= 'studentId' 
       />
+      </Container>
      );
     }
 
