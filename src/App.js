@@ -30,7 +30,7 @@ function App() {
       {
         title: "Student Id",
         dataIndex: "studentId",
-        key: "studentId"
+        key: "StudentId"
       },
       {
         title: "First Name",
