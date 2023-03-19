@@ -59,7 +59,7 @@ function App() {
       <Table 
       dataSource={students} 
       columns={columns}
-      // pagination={false} 
+      pagination={false} 
       rowKey= 'studentId' 
       />
       </Container>
