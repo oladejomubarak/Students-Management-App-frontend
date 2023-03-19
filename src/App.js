@@ -2,29 +2,40 @@ import  React, {useState, useEffect} from 'react';
 import './App.css';
 import { getAllStudents } from './Client';
 import { 
-  Table, Avatar
+  Table, Avatar, Spin
 } from 'antd';
 import Container from './Container';
+
+// const getIndicatorIcon = () => <Icon type='loading' style ={{fontSize: 24}} />
 
 function App() {
   // state = {
   //   students: []
   // }
   const [students, setStudents] = useState([]);
+  const [isFetching, setFetch]= useState(false);
 
   useEffect(() =>{ fetchStudents();}, []);
 
   const fetchStudents = () =>{
+    setFetch(true);
     getAllStudents()
     .then(res => res.json()
     .then(students => {
       //console.log(students)
     setStudents(students);
+    setFetch(false);
     }));
     
-  }     
+  } 
+  
 
   //students = this.state
+  if(isFetching){
+    return(<Container>
+      <Spin/>
+    </Container>);
+  }
 
     if (students && students.length){
      const columns= [
@@ -76,22 +87,6 @@ function App() {
 
   return (
     <h1>No student found</h1>
-    // <>
-    // {students.length == 0 ? 
-    // <h1>No student found</h1>
-    // :
-    // students.map((student, index) => {
-    //   return (
-    //     <div key={index}>
-    //       <h2>{student.studentId}</h2>
-    //       <p>{student.firstName}</p>
-    //       <p>{student.lastName}</p>
-    //       <p>{student.email}</p>
-    //     </div>
-
-    //   )
-    // })}
-    // </>
   )
 }
 
